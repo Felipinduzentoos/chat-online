@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Online do Lipeziin</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="estilo">
+    <p>Suporte</p>
+  </div>
+  </div>
+    <form id="formulario">
+      <div id="bar"><p>Suporte</p></div>
+        <div class="conteudo">
+            <ul id="texto"></ul>
+    </div>
+        <input type="text" placeholder="digite sua mensagem" id="message" autofocus autocomplete="off">
+        <button type="submit" id="botao">Enviar</button>
+    </form>
+    <style>
+      #bar{
+        background: linear-gradient(to right, #280594, #F8A39B);
+      width:400px;
+      height:60px;
+      margin-left:519px;
+      }
+        .conteudo{
+            width: 400px;
+            height:545px;
+            margin-left: 520px;
+            overflow-y: scroll;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2), 2px 0 5px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            background-color: #fff;
+        }
+        #message{
+            width:380px;
+            height:50px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            position: absolute;
+            margin-top: 548px;
+            margin-left:520px;
+        }
+        #botao{
+            position: fixed;
+            margin-top:550px;
+            margin-left:910px;
+            width:100px;
+            height:50px;
+        }
+      #texto li{
+        list-style-type: none;
+        margin-top:5px;
+        height:30px;
+        text-align: left;
+        font-size: 20px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+      ul li:nth-child(odd){
+        background-color: gray;
+      }
+      li{
+        display: block;
+      }
+      body{
+        background: linear-gradient(to right, #87CEEB, #4682B4);
+      }
+      .sidebar{
+    width:200px;
+    height:665px;
+    background-color: aquamarine;
+    position: absolute;
+    margin-left:319px;
+}
+    </style>
+    <script>
+        $(function(){
+            const socket = io ()
+        
+            
+            $('#formulario').submit(function(evt){
+                evt.preventDefault();
+             socket.emit( 'msg', $('#message').val())
+             $('#msg').val('')
+             return false
+            })
+            socket.on('msg', function(mensagem){
+       $('#texto').append($('<li>').text(mensagem))
+       })
+    })
+    </script>
+</body>
+</html>
