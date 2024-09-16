@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Online do Lipeziin</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="estilo">
+    <p>Suporte</p>
+  </div>
+  </div>
+    <form id="formulario">
+      <div id="bar"><p>Suporte</p></div>
+        <div class="conteudo">
+            <ul id="texto"></ul>
+    </div>
+        <input type="text" placeholder="digite sua mensagem" id="message" autofocus autocomplete="off">
+        <button type="submit" id="botao">Enviar</button>
+    </form>
+    <script>
+
+        $(function(){
+            const socket = io ()
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+          
+            $('#formulario').submit(function(evt){
+              const username = getQueryParam('username');
+              var message = $('#message').val();
+                evt.preventDefault();
+             socket.emit( 'msg', {username, message})
+             $('#message').val('')
+
+             return false
+            })
+            socket.on('msg', function(data){
+       $('#texto').append($('<li>').text(data.username + ': ' + data.message));
+       })
+    })
+    </script>
+</body>
+</html>

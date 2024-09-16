@@ -1,0 +1,67 @@
+#bar{
+    background: linear-gradient(to right, #280594, #F8A39B);
+  width:400px;
+  height:60px;
+  margin-left:519px;
+  }
+    .conteudo{
+        width: 400px;
+        height:545px;
+        margin-left: 520px;
+        overflow-y: scroll;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2), 2px 0 5px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        background-color: #fff;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    #message{
+        width:380px;
+        height:50px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        position: absolute;
+        margin-top: 548px;
+        margin-left:520px;
+    }
+    #botao{
+        position: fixed;
+        margin-top:550px;
+        margin-left:910px;
+        width:100px;
+        height:50px;
+    }
+  #texto li{
+    list-style-type: none;
+    margin-top:5px;
+    height:auto;
+    text-align: left;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    word-wrap: break-word;
+  }
+  ul li:nth-child(odd){
+    background-color: gray;
+  }
+  li{
+    display: block;
+  }
+  body{
+    background-color:black;
+  }
+
+  @media screen and (max-width: 500px){
+  .conteudo{
+    width: 340px;
+    height:505px;
+    margin-left: 10px;
+  }
+  #message{
+    width:335px;
+    height:50px;
+    margin-left: 10px;
+    margin-top:500px;
+  }
+  body{
+    position: fixed;
+  }
+}

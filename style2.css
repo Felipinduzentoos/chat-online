@@ -1,0 +1,33 @@
+body{
+    background-color: black;
+}
+#username{
+    height:30px;
+    width:400px;
+    margin-top:250px;
+    margin-left:500px;
+}
+h1{
+    color: white;
+    margin-left:650px;
+    margin-top:200px;
+    position: absolute;
+}
+h2{
+    color: white;
+    margin-left:520px;
+}
+
+@media screen and (max-width: 500px){
+    #username{
+    margin-left:100px;
+    width:200px;
+    }
+    h1{
+        margin-left:160px;
+        margin-top:200px;
+    }
+    h2{
+        margin-left:80px;
+    }
+}
